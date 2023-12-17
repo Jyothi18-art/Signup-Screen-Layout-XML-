@@ -1,0 +1,6 @@
+public interface ApiService {
+    @POST("signup")
+    Call<UserResponse> signUpUser(@Body User user);
+
+    // Other endpoints for login, CRUD operations, etc.
+}
