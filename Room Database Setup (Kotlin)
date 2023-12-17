@@ -1,0 +1,21 @@
+@Entity
+data class User(
+    @PrimaryKey val userId: Int,
+    val name: String,
+    val email: String,
+    val phone: String,
+    // Other fields...
+)
+
+@Dao
+interface UserDao {
+    @Query("SELECT * FROM User")
+    fun getAllUsers(): List<User>
+
+    // Other CRUD operations...
+}
+
+@Database(entities = [User::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun userDao(): UserDao
+}
